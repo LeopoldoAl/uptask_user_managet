@@ -14,7 +14,7 @@ export default function CreateProjectView() {
         description: ""
     }
     const {register, handleSubmit, formState: {errors}} = useForm({defaultValues: initialValues})
-    const mutation = useMutation({
+    const {mutate} = useMutation({
         mutationFn: createProject,
         onError: () => {
 
@@ -24,9 +24,7 @@ export default function CreateProjectView() {
             navigate('/')
         }
     })
-    const handleForm =  (data: ProjectFormData) => {
-        mutation.mutate(data) 
-    }
+    const handleForm =  (data: ProjectFormData) => mutate(data) 
   return (
     <>
         <div className="max-w-3xl mx-auto">
