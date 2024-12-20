@@ -24,8 +24,8 @@ export default function CreateProjectView() {
             navigate('/')
         }
     })
-    const handleForm =  async (data: ProjectFormData) => {
-       await mutation.mutateAsync(data) 
+    const handleForm =  (data: ProjectFormData) => {
+        mutation.mutate(data) 
     }
   return (
     <>
