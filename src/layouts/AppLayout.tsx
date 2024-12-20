@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom"
 import Logo from "@/components/Logo"
 import NavMenu from "@/components/NavMenu"
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function AppLayout() {
   return (
@@ -28,7 +30,12 @@ export default function AppLayout() {
           <p className="text-center">
             All of the copyrigths reserved {new Date().getFullYear()}
           </p>
-        </footer>      
+        </footer>
+
+        <ToastContainer
+          pauseOnHover={false}
+          pauseOnFocusLoss={false}
+        />      
     </>
   )
 }
