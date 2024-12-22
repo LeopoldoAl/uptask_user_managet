@@ -10,8 +10,7 @@ export default function DashboardView() {
   })
 
 if(isLoading) return 'Loading...'
-  console.log(data)
-  return (
+  if(data) return (
     <>
         <h1 
             className="text-5xl font-black"
@@ -32,6 +31,20 @@ if(isLoading) return 'Loading...'
             New Project
           </Link>
         </nav>
+        {data.length ? (
+          <p>There are projects</p>
+        ) : (
+          <p
+            className="text-center py-20"
+          >
+            There are not any project yet! {''}
+            <Link 
+              className="text-fuchsia-500 font-bold"
+              to="/projects/create"
+            >
+              Create Project</Link>
+          </p>
+        )}
     </>
   )
 }
