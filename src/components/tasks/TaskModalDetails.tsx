@@ -55,8 +55,8 @@ export default function TaskModalDetails() {
                                 leaveTo="opacity-0 scale-95"
                             >
                                 <Dialog.Panel className="w-full max-w-4xl transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all p-16">
-                                    <p className='text-sm text-slate-400'>Added by: </p>
-                                    <p className='text-sm text-slate-400'>Last actualization: </p>
+                                    <p className='text-sm text-slate-400'>Added by: {data.createdAt}</p>
+                                    <p className='text-sm text-slate-400'>Last actualization: {data.updatedAt}</p>
                                     <Dialog.Title
                                         as="h3"
                                         className="font-black text-4xl text-slate-600 my-5"
