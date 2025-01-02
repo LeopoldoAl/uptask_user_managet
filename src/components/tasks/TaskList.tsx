@@ -1,6 +1,6 @@
 import { Task } from "@/types/index"
 import TaskCard from "./TaskCard"
-
+import { statusTranslation } from "@/locates/es"
 type TaskListProps = {
   tasks: Task[]
 }
@@ -22,13 +22,7 @@ const statusStyles : {[key: string] : string} = {
   underReview: 'border-t-amber-500',
   completed: 'border-t-emerald-500'
 }
-const statusTranslation : {[key: string] : string} = {
-  pending: 'Pending',
-  onHold: 'On hold',
-  inProgress: 'In progress',
-  underReview: 'Under Revision',
-  completed: 'Completed'
-}
+
 export default function TaskList({ tasks }: TaskListProps) {
   const groupedTasks = tasks.reduce((acc, task) => {
     let currentGroup = acc[task.status] ? [...acc[task.status]] : []
