@@ -96,7 +96,7 @@ export default function RegisterView() {
         <div className="flex flex-col gap-5">
           <label
             className="font-normal text-2xl"
-          >Repetir Password</label>
+          >Repeat Password</label>
 
           <input
             id="password_confirmation"
