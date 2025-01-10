@@ -28,9 +28,14 @@ export default function LoginView() {
 
   return (
     <>
+      <h1 className="text-5xl font-black text-white">Log In</h1>
+      <p className="text-2xl font-light text-white mt-5">
+        Start to plan your projects {''}
+        <span className=" text-fuchsia-500 font-bold"> loggin In</span>
+      </p>
       <form
         onSubmit={handleSubmit(handleLogin)}
-        className="space-y-8 p-10 bg-white"
+        className="space-y-8 p-10 mt-10 bg-white"
         noValidate
       >
         <div className="flex flex-col gap-5">
@@ -82,12 +87,20 @@ export default function LoginView() {
       </form>
       <nav className="mt-10 flex flex-col space-y-4">
         <p
-            className="text-center text-gray-300 font-normal"
+          className="text-center text-gray-300 font-normal"
         >Have not an account yet? {''}
           <Link
             to={"/auth/register"}
             className="text-center text-red-500 font-normal"
           > Create Account</Link>
+        </p>
+        <p
+          className="text-center text-gray-300 font-normal"
+        >Have forget your password? {''}
+          <Link
+            to={"/auth/forgot-password"}
+            className="text-center text-red-500 font-normal"
+          > Restore</Link>
         </p>
       </nav>
     </>
