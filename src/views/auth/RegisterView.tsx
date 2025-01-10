@@ -143,6 +143,14 @@ export default function RegisterView() {
             className="text-center text-red-500 font-normal"
           >Log In</Link>
         </p>
+        <p
+            className="text-center text-gray-300 font-normal"
+        >Have forget your password? {''}
+          <Link
+            to={"/auth/forgot-password"}
+            className="text-center text-red-500 font-normal"
+          > Restore</Link>
+          </p>
       </nav>
     </>
   )
