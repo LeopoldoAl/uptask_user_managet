@@ -11,7 +11,7 @@ export default function AppLayout() {
     if (isError) {
       return <Navigate to='/auth/login'/>
     }
-  return (
+  if(data) return (
     <>
         <header
           className="bg-gray-800 py-5">
