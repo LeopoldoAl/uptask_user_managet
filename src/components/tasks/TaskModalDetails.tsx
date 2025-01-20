@@ -15,10 +15,10 @@ export default function TaskModalDetails() {
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)
     const taskId = queryParams.get('viewTask')!
-    const show = taskId ? true: false
-    const { data, isError , error } = useQuery({
+    const show = taskId ? true : false
+    const { data, isError, error } = useQuery({
         queryKey: ['task', taskId],
-        queryFn: () => getTaskById({projectId, taskId}),
+        queryFn: () => getTaskById({ projectId, taskId }),
         enabled: !!taskId,
         retry: false
     })
@@ -31,8 +31,8 @@ export default function TaskModalDetails() {
         },
         onSuccess: (data) => {
             toast.success(data)
-            queryClient.invalidateQueries({queryKey: ['editProject', projectId]})
-            queryClient.invalidateQueries({queryKey: ['task', taskId]})
+            queryClient.invalidateQueries({ queryKey: ['editProject', projectId] })
+            queryClient.invalidateQueries({ queryKey: ['task', taskId] })
         }
     })
 
@@ -44,14 +44,14 @@ export default function TaskModalDetails() {
 
     if (isError) {
         setTimeout(() => {
-            toast.error(error.message, {toastId: 'error'})
+            toast.error(error.message, { toastId: 'error' })
         }, 1000)
-        return <Navigate to={`/projects/${projectId}`}/>
+        return <Navigate to={`/projects/${projectId}`} />
     }
-    if(data) return (
+    if (data) return (
         <>
             <Transition appear show={show} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={() => navigate(location.pathname, {replace: true})}>
+                <Dialog as="div" className="relative z-10" onClose={() => navigate(location.pathname, { replace: true })}>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -84,12 +84,15 @@ export default function TaskModalDetails() {
                                     >{data.name}
                                     </Dialog.Title>
                                     <p className='text-lg text-slate-500 mb-2'>Description: {data.description}</p>
-                                    {data.completedBy && (
-                                        <p>
-                                            <span className='font-bold text-slate-600'>Status updated by:</span>{' '}
-                                            {data.completedBy.name}
-                                        </p>
-                                    )}
+                                    <p className='text-lg text-slate-500 mb-2'>Changes History</p>
+                                    <ol className='list-decimal'>
+                                        {data.completedBy.map((activityLog) => (
+                                            <li key={activityLog._id}>
+                                                <span className='font-bold text-slate-600'>{statusTranslation[activityLog.status]}</span>{' '}
+                                                by: {activityLog.user.name}
+                                            </li>
+                                        ))}
+                                    </ol>
                                     <div className='my-5 space-y-3'>
                                         <label className='font-bold'>Actual Status:</label>
                                         <select
