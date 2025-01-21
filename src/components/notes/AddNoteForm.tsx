@@ -1,8 +1,18 @@
+import { NoteFormData } from "@/types/index"
+import { useForm } from "react-hook-form"
+import ErrorMessage from "../ErrorMessage"
 
 export default function AddNoteForm() {
+    const initialValues: NoteFormData = {
+        content: ""
+    }
+    const { register, handleSubmit, formState: {errors} } = useForm({defaultValues: initialValues})
+    const handleAddNote = (formData: NoteFormData) => {
+        console.log(formData)
+    }
   return (
     <form
-        onSubmit={() => {}}
+        onSubmit={handleSubmit(handleAddNote)}
         className="space-y-3"
         noValidate
     >
@@ -15,7 +25,13 @@ export default function AddNoteForm() {
                 id="content"
                 placeholder="Note Content"
                 className="w-full p-3 border border-gray-300"
+                {...register('content', {
+                    required: "The note content is obligatory!"
+                })}
             />
+            {errors.content && (
+                <ErrorMessage>{errors.content?.message}</ErrorMessage>
+            )}
         </div>
         <input 
             type="submit" 
