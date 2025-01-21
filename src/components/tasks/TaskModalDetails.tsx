@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import { formatDate } from '@/utils/utils'
 import { statusTranslation } from '@/locates/es'
 import { TaskStatus } from '@/types/index'
+import NotesPanel from '../notes/NotesPanel'
 
 export default function TaskModalDetails() {
     const params = useParams()
@@ -84,15 +85,20 @@ export default function TaskModalDetails() {
                                     >{data.name}
                                     </Dialog.Title>
                                     <p className='text-lg text-slate-500 mb-2'>Description: {data.description}</p>
-                                    <p className='text-lg text-slate-500 mb-2'>Changes History</p>
-                                    <ol className='list-decimal'>
-                                        {data.completedBy.map((activityLog) => (
-                                            <li key={activityLog._id}>
-                                                <span className='font-bold text-slate-600'>{statusTranslation[activityLog.status]}</span>{' '}
-                                                by: {activityLog.user.name}
-                                            </li>
-                                        ))}
-                                    </ol>
+                                    {data.completedBy.length ? (
+                                        <>
+                                            <p className='text-lg text-slate-500 mb-2'>Changes History</p>
+                                            <ol className='list-decimal'>
+                                                {data.completedBy.map((activityLog) => (
+                                                    <li key={activityLog._id}>
+                                                        <span className='font-bold text-slate-600'>{statusTranslation[activityLog.status]}</span>{' '}
+                                                        by: {activityLog.user.name}
+                                                    </li>
+                                                ))}
+                                            </ol>
+                                        </>
+                                    ): null}
+
                                     <div className='my-5 space-y-3'>
                                         <label className='font-bold'>Actual Status:</label>
                                         <select
@@ -105,6 +111,8 @@ export default function TaskModalDetails() {
                                             ))}
                                         </select>
                                     </div>
+
+                                    <NotesPanel/>
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>
