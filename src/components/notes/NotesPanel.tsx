@@ -17,7 +17,7 @@ export default function NotesPanel({ notes }: NotesPanelProps) {
               >
                 Notes: 
               </p>
-              {notes.map( note => <NoteDetail/>)}
+              {notes.map( note => <NoteDetail key={note._id} note={note}/>)}
           </>
         ) :
           (
