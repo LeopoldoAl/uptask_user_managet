@@ -23,6 +23,7 @@ export const userSchema = authSchema.pick({
   _id: z.string()
 })
 export type User = z.infer<typeof userSchema>
+export type UserProfieForm = Pick<User, 'name'|'email'>
 /** Notes */
 const noteSchema = z.object({
   _id: z.string(),
