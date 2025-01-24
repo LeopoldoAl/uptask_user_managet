@@ -1,7 +1,8 @@
 import { checkPassword } from '@/api/AuthAPI'
+import { deleteProject } from '@/api/ProjectApi'
 import { CheckPasswordForm } from '@/types/index'
 import { Dialog, Transition } from '@headlessui/react'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Fragment } from 'react'
 import { useForm } from "react-hook-form"
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -20,13 +21,25 @@ export default function DeleteProjectModal() {
     const show = deleteProjectId ? true : false
 
     const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues })
+    const queryClient = useQueryClient()
     const checkUserPasswordMutation = useMutation({
         mutationFn: checkPassword,
         onError: (error) => toast.error(error.message)
     })
+    const deleteProjectMutation = useMutation({
+        mutationFn: deleteProject,
+        onError: (error) => {
+          toast.error(error.message)
+        },
+        onSuccess: (data) => {
+          toast.success(data)
+          queryClient.invalidateQueries({ queryKey: ['projects'] })
+          navigate(location.pathname, { replace: true })
+        }
+      })
     const handleForm = async (formData: CheckPasswordForm) => {
         await checkUserPasswordMutation.mutateAsync(formData)
-        console.log('After the mutation')
+        await deleteProjectMutation.mutateAsync(deleteProjectId)
     }
 
 

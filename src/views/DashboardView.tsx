@@ -1,13 +1,12 @@
-import { deleteProject, getProjects } from "@/api/ProjectApi"
+import { getProjects } from "@/api/ProjectApi"
 import DeleteProjectModal from "@/components/projects/DeleteProjectModal"
 import { useAuth } from '@/hooks/useAuth'
 import { isManager } from '@/utils/policies'
 import { Menu, Transition } from '@headlessui/react'
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid'
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import { Fragment } from 'react'
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import { toast } from 'react-toastify'
 
 
 export default function DashboardView() {
@@ -19,17 +18,6 @@ export default function DashboardView() {
     queryFn: getProjects
   })
 
-  const queryClient = useQueryClient()
-  const { mutate } = useMutation({
-    mutationFn: deleteProject,
-    onError: (error) => {
-      toast.error(error.message)
-    },
-    onSuccess: (data) => {
-      toast.success(data)
-      queryClient.invalidateQueries({ queryKey: ['projects'] })
-    }
-  })
   if (isLoading && authLoading) return 'Loading...'
   if (data && user) return (
     <>
