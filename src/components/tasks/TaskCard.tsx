@@ -1,12 +1,13 @@
 import { deleteTask } from "@/api/TaskAPI"
 import { Task } from "@/types/index"
+import { useDraggable } from '@dnd-kit/core'
+import { CSS } from '@dnd-kit/utilities'
 import { Menu, Transition } from "@headlessui/react"
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { Fragment } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { toast } from "react-toastify"
-import {useDraggable} from '@dnd-kit/core'
 
 type TaskCardProps = {
     task: Task,
@@ -33,16 +34,16 @@ export default function TaskCard({ task, canEdit }: TaskCardProps) {
         }
     })
 
-    const style = transform ? {
-
-    }: undefined
+    const style = {
+        transform: CSS.Translate.toString(transform),
+    }
     return (
         <li className="p-5 bg-white border border-slate-300 flex justify-between gap-3">
             <div 
+                ref={setNodeRef} 
+                style={style} 
                 {...listeners}
                 {...attributes}
-                ref={setNodeRef}
-                style={style}
                 className="min-w-0 flex flex-col gap-y-4"
             >
                 <button
