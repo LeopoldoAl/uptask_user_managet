@@ -1,12 +1,12 @@
+import { updateStatus } from "@/api/TaskAPI"
 import { statusTranslation } from "@/locates/es"
 import { Task, TaskStatus } from "@/types/index"
 import { DndContext, DragEndEvent } from "@dnd-kit/core"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useParams } from "react-router-dom"
+import { toast } from "react-toastify"
 import DropTask from "../projects/DropTask"
 import TaskCard from "./TaskCard"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { updateStatus } from "@/api/TaskAPI"
-import { toast } from "react-toastify"
-import { useParams } from "react-router-dom"
 type TaskListProps = {
   tasks: Task[],
   canEdit: boolean
