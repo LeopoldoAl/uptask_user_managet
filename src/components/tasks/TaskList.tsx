@@ -55,6 +55,22 @@ export default function TaskList({ tasks, canEdit }: TaskListProps) {
       const taskId = active.id.toString()
       const status = over.id as TaskStatus
       mutate({projectId, taskId, status})
+      queryClient.setQueryData(['editProject', projectId], (prevData) => {
+        const updateTaks = prevData.tasks.map((task: Task) => {
+          if (task._id===taskId) {
+            return {
+              ...task,
+              status
+            }
+          } else {
+            return task
+          }
+        })
+        return {
+          ...prevData,
+          tasks: updateTaks
+        }
+      })
     }
   }
   return (
