@@ -43,7 +43,7 @@ export default function Router() {
                     <Route path="/auth/new-password" element={<NewPasswordView />} />
                 </Route>
                 <Route element={<AuthLayout />}>
-                <Route path="*" element={<NotFound/>}/>
+                <Route path="/404" element={<NotFound/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
