@@ -1,5 +1,5 @@
 import { deleteTask } from "@/api/TaskAPI"
-import { Task } from "@/types/index"
+import { TaskProject } from "@/types/index"
 import { useDraggable } from '@dnd-kit/core'
 import { CSS } from '@dnd-kit/utilities'
 import { Menu, Transition } from "@headlessui/react"
@@ -10,7 +10,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { toast } from "react-toastify"
 
 type TaskCardProps = {
-    task: Task,
+    task: TaskProject,
     canEdit: boolean
 }
 
