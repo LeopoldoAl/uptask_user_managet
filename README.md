@@ -52,7 +52,7 @@ How we can imagine to build this application, we had to integrate many dependenc
 * react-router-dom
 * react-toastify
 * zod
-### Development depenncies:
+### Development dependencies:
 - @eslint/js
 - @types/node
 - @types/react
