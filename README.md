@@ -33,7 +33,7 @@ Also once the users are registered, will put to change their profile data such a
 * Password
 ![Editing password](../media/registerAndLogin/changing-password.png?raw=true)
 
-But supposing the user forgot your password, this will put recovered using the following view:
+But supposing the user forgot your password, this will put to be recovered using the following view:
 ![Forgot password](../media/registerAndLogin/forgot-password.png?raw=true)
 
 How we can imagine to build this application, we had to integrate many dependencies both for developing as for production.
