@@ -11,7 +11,7 @@ Once the user had been registered will see the following, where he will be able 
 ![Confirmation page](../media/Views/menu-see-edit-delete-project.png?raw=true)
 
 ![Main view](../media/Views/mainView.png?raw=true)
-We can navigate through our we application with the next menu:
+We can navigate through our user menu, with the next menu:
 ![User menu](../media/registerAndLogin/user-menu.png?raw=true)
 We can add project, like this.
 ![Create view](../media/Views/create-project.png?raw=true)
