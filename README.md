@@ -12,7 +12,7 @@ Once the user had been registered will see the following, where he will be able 
 
 ![Main view](../media/Views/mainView.png?raw=true)
 We can navigate through our we application with the next menu:
-![User menu](../media/Views/user-menu.png?raw=true)
+![User menu](../media/registerAndLogin/user-menu.png?raw=true)
 We can add project, like this.
 ![Create view](../media/Views/create-project.png?raw=true)
 But supposing the user chose the menu option [See project], this will allow adding tasks, and adding collaborators to his project:
