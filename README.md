@@ -20,7 +20,7 @@ But supposing the user chose the menu option [See project], this will allow addi
 Adding a new task:
 ![Adding new task](../media/Views/add-task.png?raw=true)
 
-![Adding new task](../media/Views/project-details?raw=true)
+![Adding new task](../media/Views/project-details.png?raw=true)
 Adding collaborators:
 ![Adding collaborators](../media/Views/add-colaborator.png?raw=true)
 
