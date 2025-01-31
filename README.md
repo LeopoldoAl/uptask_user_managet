@@ -69,6 +69,7 @@ How we can imagine to build this application, we had to integrate many dependenc
 - typescript-eslint
 - vite
 
+Like this looks the [application online](https://uptask-user-managet.vercel.app/) with the excellent services from [render.com](https://render.com/), [verver.com](https://vercel.com/) and [mongoDB Atlas](https://www.mongodb.com/)
 
 # React + TypeScript + Vite
 
