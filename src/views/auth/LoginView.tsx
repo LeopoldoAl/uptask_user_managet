@@ -97,7 +97,7 @@ export default function LoginView() {
         </p>
         <p
           className="text-center text-gray-300 font-normal"
-        >Have forget your password? {''}
+        >Have forgotten your password? {''}
           <Link
             to={"/auth/forgot-password"}
             className="text-center text-red-500 font-normal"
